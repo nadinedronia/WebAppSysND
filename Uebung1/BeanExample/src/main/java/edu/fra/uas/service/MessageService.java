@@ -12,9 +12,22 @@ public class MessageService {
     // gleiches Pattern wie in deiner BeanExampleApplication
     //erstellt einen Logger für diese Klasse.
     private static final Logger log = LoggerFactory.getLogger(MessageService.class);
-
+    int counter = 0;
     private String message;
 
+    public void increment () {
+         counter++;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public MessageService() {
+        counter++;
+        // Diagnose-Log: Konstruktoraufruf + Zähler
+        log.debug("MessageService() called -> instance count={}", counter);
+    }
     public String getMessage() {
         // Diagnose-Log: Aufruf + Zustand
         log.debug("getMessage() called -> returning message (len={}, null={})",
