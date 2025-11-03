@@ -1,25 +1,27 @@
-package hausaufgabe.Logik;
+package hausaufgabe.logik;
 
 import java.util.List;
+import java.util.Collections;
+import java.util.ArrayList;
 
 public class NotenLogik {
 
     private List <Double> noten = new ArrayList<>();
     
-    double notendurchschnitt() {
+    public double notendurchschnitt() {
         listeLeer();
 
         double summe = 0;
         for (double note : noten) {
             summe += note;
         }
-        return (double) summe / noten.size();
+        return summe / noten.size();
     
     }
     public double besteNote() {
         listeLeer();
 
-        double beste;
+        double beste = noten.get(0);
         for (double note : noten) {
             if (note < beste) {
                 beste = note;
@@ -30,7 +32,7 @@ public class NotenLogik {
     public double schlechtesteNote() {
         listeLeer();
 
-        double schlechteste;
+        double schlechteste = noten.get(0);
         for (double note : noten) {
             if (note > schlechteste) {
                 schlechteste = note;
@@ -50,11 +52,11 @@ public class NotenLogik {
     public List <Double> getNotenListe() {
     return Collections.unmodifiableList(noten);
     } 
-    public static void noteGueltig(double note){
+    private void noteGueltig(double note){
         if (note < 1.0 || note > 6.0) 
             throw new IllegalArgumentException("Ungültige Note: " + note);
      }
-     public static void listeLeer(){
+     private void listeLeer(){
         if (noten.isEmpty())
             throw new IllegalStateException("Notenliste ist leer.");
      }
