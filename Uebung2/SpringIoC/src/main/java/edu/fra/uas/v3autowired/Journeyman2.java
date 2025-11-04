@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Journeyman {
+public class Journeyman2 {
     @Autowired
-   @Qualifier("pleasePaint")
+   @Qualifier("pleaseHammer")
     Work work;
 
     public void performWork() {
+        System.out.println("Journeyman2 is working:");
         work.doWork();
    }
 }
