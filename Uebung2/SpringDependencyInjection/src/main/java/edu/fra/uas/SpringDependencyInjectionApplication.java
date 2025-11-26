@@ -11,24 +11,16 @@ import edu.fra.uas.service.FirstService;
 @SpringBootApplication
 public class SpringDependencyInjectionApplication {
 	
-	@Autowired
-	private FirstService firstService;
+	//@Autowired
+	//private FirstService firstService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringDependencyInjectionApplication.class, args);
 	}
 	
 	@Bean
-	CommandLineRunner init() {
-		CommandLineRunner action = new CommandLineRunner() {
-
-			@Override
-			public void run(String... args) throws Exception {
-//				FirstService firstService = new FirstService();
-				firstService.doSomething();
-			}
-		};
-		return action;
-	}
+    CommandLineRunner init(FirstService firstService) {
+        return args -> firstService.doSomething();
+    }
 
 }
