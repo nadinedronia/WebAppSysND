@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "HausisApplication",
+            "request": "launch",
+            "mainClass": "com.noten.HausisApplication",
+            "projectName": "hausis"
+        },
+        {
+            "type": "java",
+            "name": "CounterServiceMain",
+            "request": "launch",
+            "mainClass": "com.example.hausis.CounterServiceMain",
+            "projectName": "hausis"
+        },
+        {
+            "type": "java",
             "name": "UserApplication",
             "request": "launch",
             "mainClass": "edu.fra.uas.UserApplication",

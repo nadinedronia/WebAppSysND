@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Notenübersicht</title>
+</head>
+<body>
+
+<h1>Meine Noten</h1>
+
+<!-- Fehlermeldung, falls vorhanden -->
+<div th:if="${error}">
+    <p style="color:red;" th:text="${error}"></p>
+</div>
+
+<!-- Tabelle mit Noten -->
+<table border="1">
+    <tr>
+        <th>#</th>
+        <th>Note</th>
+    </tr>
+    <tr th:each="note, stat : ${notenListe}">
+        <td th:text="${stat.index + 1}">1</td>
+        <td th:text="${note}">1.0</td>
+    </tr>
+</table>
+
+<!-- Falls Noten vorhanden: Durchschnitt, beste, schlechteste -->
+<div th:if="${notenListe != null and !notenListe.isEmpty()}">
+    <p>Durchschnitt: <span th:text="${durchschnitt}">1.5</span></p>
+    <p>Beste Note: <span th:text="${beste}">1.0</span></p>
+    <p>Schlechteste Note: <span th:text="${schlechteste}">3.0</span></p>
+</div>
+
+<hr>
+
+<h2>Neue Note hinzufügen</h2>
+<form th:action="@{/noten}" method="post">
+    <label for="note">Note:</label>
+    <input type="number" id="note" name="note" step="0.1" min="1.0" max="6.0" required>
+    <button type="submit">Hinzufügen</button>
+</form>
+
+</body>
+</html>

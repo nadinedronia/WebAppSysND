@@ -1,28 +1,16 @@
-package Hausaufgabe2.logik2;
+package com.noten;
+
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import java.util.Collections;
 import java.util.ArrayList;
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
 
-@service
-public class Notenlogik2 {
-
-
+@Service
+public class NotenLogik {
 
     private List <Double> noten = new ArrayList<>();
-    @PostConstruct
-    public void datenInitialisieren() {
-        noten.clear();
-
-        noteHinzufuegen(2.0);
-        noteHinzufuegen(1.7);
-        noteHinzufuegen(3.3);
-    }
-    @PreDestroy
-    public void datenLoeschen() {
-    noten.clear();
-    }
     
     public double notendurchschnitt() {
         listeLeer();
@@ -64,7 +52,6 @@ public class Notenlogik2 {
         listeLeer();
         noten.remove(note);
     
-
     }
     public List <Double> getNotenListe() {
     return Collections.unmodifiableList(noten);

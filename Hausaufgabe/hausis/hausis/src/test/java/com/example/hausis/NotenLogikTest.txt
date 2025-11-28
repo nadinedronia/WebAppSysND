@@ -1,0 +1,39 @@
+package com.example.hausis;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.noten.NotenLogik;
+
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public class NotenLogikTest {
+
+    // System Under Test
+    private NotenLogik logik;
+
+    @BeforeEach
+    void setUp() {
+        logik = new NotenLogik();
+    }
+
+    @Test
+    void testNoteHinzufuegenUndListe() {
+        logik.noteHinzufuegen(1.3);
+        logik.noteHinzufuegen(2.7);
+
+        List<Double> noten = logik.getNotenListe();
+
+        // Liste enthält GENAU diese Werte in der Reihenfolge
+        assertThat(noten, contains(1.3, 2.7));
+
+        // Liste hat genau 2 Elemente
+        assertThat(noten, hasSize(2));
+    }
+
+    // weitere Tests …
+}
